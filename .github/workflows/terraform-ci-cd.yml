@@ -45,6 +45,11 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
+      - name: Terraform Plan (Debug)
+        run: |
+          export TF_LOG=DEBUG
+          terraform plan
+
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
