@@ -25,6 +25,7 @@ jobs:
           echo "Printing GitHub OIDC Token"
           curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL" -o github-token.jwt
           cat github-token.jwt
+          curl -sSL -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" | jq
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
